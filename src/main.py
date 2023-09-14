@@ -53,6 +53,12 @@ def segment_data(generator, trainingpercent):
 beefile = "Bees"
 notbeefile = "Not_Bees"
 
+from PIL import Image
+
 data = read_data_from_files(notbeefile)
 processed_data = preprocess_data(data, 300, 300, False)
 # (training_data,testing_data) = segment_data(processeddata)
+while input("type q to quit: ") != "q":
+    datum = next(processed_data)[0]
+    print(datum.shape)
+    Image.fromarray(np.uint8(datum * 255)).show()
